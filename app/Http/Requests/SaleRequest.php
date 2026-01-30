@@ -34,7 +34,7 @@ class SaleRequest extends FormRequest
     public function rules(): array
     {
         $rulesArray = [
-            'party_id' => ['required', 'integer', Rule::exists('parties', 'id')->where('party_type', 'customer')],
+            'party_id' => ['required', 'integer', Rule::exists('parties', 'id')->where('party_type', 'vendor')],
             'sale_date' => ['required', 'date_format:'.implode(',', $this->getDateFormats())],
             'prefix_code' => ['nullable', 'string', 'max:250'],
             'sale_code' => ['required', 'string', 'max:50'],
