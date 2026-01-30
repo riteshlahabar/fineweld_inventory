@@ -69,7 +69,7 @@
                                         <div class="row contacts">
                                             <div class="col invoice-to">
                                                 <div class="text-gray-light fw-bold text-uppercase">{{ __('sale.quotation.for') }}:</div>
-                                                <h2 class="to">{{ $party->company_name }}</h2>
+                                                <h2 class="to">{{ $quotation->party?->company_name ?? '-' }}</h2>
                                                 <div class="address">{{ $quotation->party->invoiceing_address }}</div>
                                             </div>
 
