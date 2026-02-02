@@ -70,6 +70,7 @@ use App\Http\Controllers\UserPermissionsGroupController;
 use App\Http\Controllers\UserRolesController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\SupportPortal\TicketController;
+use App\Http\Controllers\SupportPortal\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
