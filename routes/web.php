@@ -629,8 +629,14 @@ Route::group(['prefix' => 'tickets'], function () {
     
     Route::get('/status', [TicketController::class, 'status'])
     ->middleware('can:ticket.status')
-    ->name('tickets.status');
- // Ticket Status
+    ->name('tickets.status'); // Ticket Status
+ 
+// Product listing
+    Route::group(['prefix' => 'products'], function () {
+    Route::get('/list', [ProductController::class, 'list'])->name('products.list');
+    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/delete', [ProductController::class, 'delete'])->name('products.delete');
+});
     
     Route::get('/feedback', [TicketController::class, 'feedback'])
         ->middleware('can:ticket.feedback')
