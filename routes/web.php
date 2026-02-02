@@ -594,62 +594,48 @@ Route::group(['prefix' => 'tickets'], function () {
     // List & View Operations
     Route::get('/list', [TicketController::class, 'list'])
         ->middleware('can:ticket.view')
-        ->name('tickets.list'); // All Tickets List
-    
+        ->name('tickets.list'); // All Tickets List    
     Route::get('/datatable-list', [TicketController::class, 'datatableList'])
-        ->name('tickets.datatable.list'); // Datatable AJAX
-    
+        ->name('tickets.datatable.list'); // Datatable AJAX    
     Route::get('/details/{id}', [TicketController::class, 'details'])
         ->middleware('can:ticket.view')
         ->name('tickets.details'); // Single Ticket Details
-
     // Create Operations
     Route::get('/create', [TicketController::class, 'create'])
         ->middleware('can:ticket.create')
-        ->name('tickets.create'); // Raise Ticket Form
-    
+        ->name('tickets.create'); // Raise Ticket Form    
     Route::post('/store', [TicketController::class, 'store'])
         ->name('tickets.store'); // Save New Ticket
-
     // Edit & Update Operations
     Route::get('/edit/{id}', [TicketController::class, 'edit'])
         ->middleware('can:ticket.edit')
-        ->name('tickets.edit'); // Edit Ticket Form
-    
+        ->name('tickets.edit'); // Edit Ticket Form    
     Route::put('/update', [TicketController::class, 'update'])
         ->name('tickets.update'); // Update Ticket
-
     // Special Pages
     Route::get('/assign', [TicketController::class, 'assign'])
         ->middleware('can:ticket.assign')
-        ->name('tickets.assign'); // Assign Technicians
-    
+        ->name('tickets.assign'); // Assign Technicians    
     Route::get('/track', [TicketController::class, 'track'])
         ->middleware('can:ticket.track')
-        ->name('tickets.track'); // Live Tracking
-    
+        ->name('tickets.track'); // Live Tracking    
     Route::get('/status', [TicketController::class, 'status'])
     ->middleware('can:ticket.status')
-    ->name('tickets.status'); // Ticket Status    
-    
+    ->name('tickets.status'); // Ticket Status        
     Route::get('/feedback', [TicketController::class, 'feedback'])
         ->middleware('can:ticket.feedback')
-        ->name('tickets.feedback'); // Feedback
-    
+        ->name('tickets.feedback'); // Feedback    
     Route::get('/reports', [TicketController::class, 'reports'])
         ->middleware('can:ticket.reports')
         ->name('tickets.reports'); // Reports
-
     // Delete Operation
     Route::post('/delete/', [TicketController::class, 'delete'])
         ->middleware('can:ticket.delete')
         ->name('tickets.delete');
-
     // Print & PDF
     Route::get('/print/{id}', [TicketController::class, 'print'])
         ->middleware('can:ticket.view')
-        ->name('tickets.print');
-    
+        ->name('tickets.print');    
     Route::get('/pdf/{id}', [TicketController::class, 'generatePdf'])
         ->middleware('can:ticket.view')
         ->name('tickets.pdf');
@@ -657,15 +643,12 @@ Route::group(['prefix' => 'tickets'], function () {
     // PRODUCTS ROUTES - INSIDE TICKETS GROUP
     Route::get('/products/list', [ProductController::class, 'list'])
         ->middleware('can:product.view')
-        ->name('products.list');
-    
+        ->name('products.list');    
     Route::get('/products/datatable-list', [ProductController::class, 'datatableList'])
-        ->name('products.datatable.list');
-    
+        ->name('products.datatable.list');    
     Route::get('/products/create', [ProductController::class, 'create'])
         ->middleware('can:product.create')
-        ->name('products.create');
-    
+        ->name('products.create');    
     Route::post('/products/delete', [ProductController::class, 'delete'])
         ->name('products.delete');    
 });

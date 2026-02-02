@@ -284,14 +284,12 @@
     <ul>
 		 {{-- Products --}}
 @can('product.view')
-<li class="{{ request()->is('products/list') ? 'mm-active' : '' }}">
+<li class="{{ request()->is('tickets/products/list') ? 'mm-active' : '' }}">
     <a href="{{ route('products.list') }}">
         <i class='bx bx-package'></i> Products
     </a>
 </li>
 @endcan
-
-
         {{-- All Tickets --}}
         @can('ticket.view')
         <li class="{{ request()->is('tickets/list') ? 'mm-active' : '' }}">
