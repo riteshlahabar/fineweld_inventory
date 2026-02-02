@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function list()
-    {
-        $lang = [
-            'products_list' => 'Products List',
-            'product' => 'Product'
-        ];
-        return view('supportportal.products.list', compact('lang'));
-    }
+{
+    $lang = [
+        'products_list' => 'Products List',
+        'product' => 'Product'
+    ];
+    return view('support-portal.products.list', compact('lang')); // ✅ Fixed path
+}
     
     public function datatableList(Request $request)
     {
