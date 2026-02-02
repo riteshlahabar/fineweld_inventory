@@ -6,13 +6,12 @@
 @endsection
 
 @section('content')
-<!--start page wrapper -->
 <div class="page-wrapper">
     <div class="page-content">
         <x-breadcrumb :langArray="[
-                'supportportal.products',
-                $lang['products_list'] ?? 'Products List',
-            ]"/>
+            'supportportal.products',
+            $lang['products_list'] ?? 'Products List',
+        ]"/>
 
         <div class="card">
             <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center">
@@ -21,12 +20,12 @@
                 </div>
                 <div class="d-flex gap-2">
                     @can('product.create')
-                    <x-anchor-tag href="{{ route('products.create') }}" text="{{ __('app.create') }} {{ $lang['product'] ?? 'Product' }}" class="btn btn-primary px-5" />
+                    <x-anchor-tag href="{{ route('products.create') }}" text="{{ __('app.create') }} Product" class="btn btn-primary px-5" />
                     @endcan
                 </div>
             </div>
             <div class="card-body">
-                <form class="row g-3 needs-validation" id="datatableForm" action="{{ route('products.delete') }}" enctype="multipart/form-data">
+                <form id="datatableForm" action="{{ route('products.delete') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <input type="hidden" id="base_url" value="{{ url('/') }}">
@@ -63,5 +62,4 @@
 <script src="{{ versionedAsset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ versionedAsset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 <script src="{{ versionedAsset('custom/js/common/common.js') }}"></script>
-<script src="{{ versionedAsset('custom/js/supportportal/products-list.js') }}"></script>
 @endsection
