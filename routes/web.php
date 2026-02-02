@@ -70,7 +70,6 @@ use App\Http\Controllers\UserPermissionsGroupController;
 use App\Http\Controllers\UserRolesController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\SupportPortal\TicketController;
-use App\Http\Controllers\SupportPortal\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -630,14 +629,7 @@ Route::group(['prefix' => 'tickets'], function () {
     
     Route::get('/status', [TicketController::class, 'status'])
     ->middleware('can:ticket.status')
-    ->name('tickets.status'); // Ticket Status
- 
-// Product listing
-    Route::group(['prefix' => 'products'], function () {
-    Route::get('/list', [ProductController::class, 'list'])->name('products.list');
-    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/delete', [ProductController::class, 'delete'])->name('products.delete');
-});
+    ->name('tickets.status'); // Ticket Status    
     
     Route::get('/feedback', [TicketController::class, 'feedback'])
         ->middleware('can:ticket.feedback')
@@ -660,6 +652,21 @@ Route::group(['prefix' => 'tickets'], function () {
     Route::get('/pdf/{id}', [TicketController::class, 'generatePdf'])
         ->middleware('can:ticket.view')
         ->name('tickets.pdf');
+
+    // PRODUCTS ROUTES - INSIDE TICKETS GROUP
+    Route::get('/products/list', [ProductController::class, 'list'])
+        ->middleware('can:product.view')
+        ->name('products.list');
+    
+    Route::get('/products/datatable-list', [ProductController::class, 'datatableList'])
+        ->name('products.datatable.list');
+    
+    Route::get('/products/create', [ProductController::class, 'create'])
+        ->middleware('can:product.create')
+        ->name('products.create');
+    
+    Route::post('/products/delete', [ProductController::class, 'delete'])
+        ->name('products.delete');    
 });
 
 
